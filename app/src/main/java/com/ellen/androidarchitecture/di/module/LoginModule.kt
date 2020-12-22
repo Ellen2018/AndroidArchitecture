@@ -1,4 +1,4 @@
-package com.ellen.androidarchitecture.dagger.module
+package com.ellen.androidarchitecture.di.module
 
 import com.ellen.androidarchitecture.kmvp.login.LoginModel
 import com.ellen.androidarchitecture.kmvp.login.LoginPresenter

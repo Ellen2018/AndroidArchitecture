@@ -1,9 +1,8 @@
 package com.ellen.androidarchitecture.kmvp.login
 
-import com.ellen.androidarchitecture.dagger.module.LoginModule
-import com.ellen.androidarchitecture.dagger.module.LoginModule_GetLoginModelFactory
+import com.ellen.androidarchitecture.di.module.LoginModule
+import com.ellen.androidarchitecture.di.module.LoginModule_GetLoginModelFactory
 import com.ellen.androidarchitecture.kmvp.base.BasePresenter
-import dagger.internal.Factory
 import javax.inject.Inject
 
 /**

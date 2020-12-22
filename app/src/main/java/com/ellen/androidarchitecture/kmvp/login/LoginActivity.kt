@@ -3,9 +3,8 @@ package com.ellen.androidarchitecture.kmvp.login
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.ellen.androidarchitecture.dagger.component.LoginComponent
-import com.ellen.androidarchitecture.dagger.module.LoginModule
-import com.ellen.androidarchitecture.dagger.module.LoginModule_GetLoginPresenterFactory
+import com.ellen.androidarchitecture.di.module.LoginModule
+import com.ellen.androidarchitecture.di.module.LoginModule_GetLoginPresenterFactory
 import com.ellen.androidarchitecture.kmvp.base.BaseActivity
 
 /**
@@ -21,6 +20,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
         LoginActivity_MembersInjector
                 .create(LoginModule_GetLoginPresenterFactory.create(LoginModule()))
                 .injectMembers(this)
+
         mPresenter.attachView(this)
     }
 
