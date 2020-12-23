@@ -3,8 +3,7 @@ package com.ellen.androidarchitecture.kmvp.login
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.ellen.androidarchitecture.di.module.LoginModule
-import com.ellen.androidarchitecture.di.module.LoginModule_GetLoginPresenterFactory
+import com.ellen.androidarchitecture.di.module.*
 import com.ellen.androidarchitecture.kmvp.base.BaseActivity
 
 /**
@@ -17,11 +16,11 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
         super.onCreate(savedInstanceState)
 
         //利用Dagger2完成mPresenter的注入
-        LoginActivity_MembersInjector
-                .create(LoginModule_GetLoginPresenterFactory.create(LoginModule()))
-                .injectMembers(this)
-
-        mPresenter.attachView(this)
+        LoginActivity_MembersInjector.create(
+            LoginModule_ProvideLoginPresenterFactory.create(LoginModule(this),
+                LoginModule_ProvideLoginModelFactory.create(LoginModule(this)),
+                LoginModule_ProvideLoginViewFactory.create(LoginModule(this))
+            )).injectMembers(this)
     }
 
     override fun onResume() {

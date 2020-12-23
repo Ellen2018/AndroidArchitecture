@@ -1,14 +1,15 @@
 package com.ellen.androidarchitecture.kmvp.login
 
-import com.ellen.androidarchitecture.di.module.LoginModule
-import com.ellen.androidarchitecture.di.module.LoginModule_GetLoginModelFactory
 import com.ellen.androidarchitecture.kmvp.base.BasePresenter
 import javax.inject.Inject
 
 /**
  * 登录Presenter层
  */
-class LoginPresenter @Inject constructor(): BasePresenter<LoginModel, LoginContract.LoginView>() {
+class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
+
+    @Inject
+    constructor(mModel:LoginModel,mView:LoginContract.LoginView) : super(mModel,mView)
 
     fun login(account:String,password:String){
         var json = mModel.loginByAccountPassword(account,password)
@@ -18,18 +19,4 @@ class LoginPresenter @Inject constructor(): BasePresenter<LoginModel, LoginContr
             mView.loginSuccess()
         }
     }
-
-    override fun attachView(mView: LoginContract.LoginView) {
-       this.mView = mView
-
-        //完成LoginModel的依赖注入
-        LoginPresenter_MembersInjector
-                .create(LoginModule_GetLoginModelFactory.create(LoginModule()))
-                .injectMembers(this)
-
-    }
-
-    override fun destroy() {
-    }
-
 }
