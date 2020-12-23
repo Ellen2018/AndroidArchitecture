@@ -1,6 +1,5 @@
 package com.ellen.androidarchitecture.kmvp.login
 
-import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.ellen.androidarchitecture.kmvp.di.module.*
@@ -11,18 +10,6 @@ import com.ellen.androidarchitecture.kmvp.di.component.DaggerLoginComponent
  * 登录View层
  */
 class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        //简化Dagger2的代码
-        DaggerLoginComponent
-            .builder()
-            .loginModule(LoginModule(this))
-            .build()
-            .injectLoginActivity(this)
-    }
 
     override fun onResume() {
         super.onResume()
@@ -37,6 +24,15 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
 
     override fun loginFailure(errMessage: String) {
        Toast.makeText(this,errMessage,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun initMVP() {
+        //简化Dagger2的代码
+        DaggerLoginComponent
+            .builder()
+            .loginModule(LoginModule(this))
+            .build()
+            .injectLoginActivity(this)
     }
 
 }

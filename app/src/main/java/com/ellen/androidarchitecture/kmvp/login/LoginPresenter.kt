@@ -1,5 +1,6 @@
 package com.ellen.androidarchitecture.kmvp.login
 
+import android.util.Log
 import com.ellen.androidarchitecture.kmvp.base.BasePresenter
 import javax.inject.Inject
 
