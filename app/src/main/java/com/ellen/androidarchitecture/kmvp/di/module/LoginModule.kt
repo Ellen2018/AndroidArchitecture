@@ -1,4 +1,4 @@
-package com.ellen.androidarchitecture.di.module
+package com.ellen.androidarchitecture.kmvp.di.module
 
 import com.ellen.androidarchitecture.kmvp.login.LoginContract
 import com.ellen.androidarchitecture.kmvp.login.LoginModel
