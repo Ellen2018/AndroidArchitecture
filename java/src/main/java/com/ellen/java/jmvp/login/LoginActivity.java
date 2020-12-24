@@ -20,19 +20,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected void initMvp() {
-
-
-
-
         //利用Dagger2依赖注入初始化MVP
         DaggerLoginComponent
                 .builder()
                 .loginModule(new LoginModule(this))
                 .build()
                 .injectLoginActivity(this);
-
-        Log.e("Ellen2020","java-有没有生产Presenter:"+mPresenter.hashCode());
-        Log.e("Ellen2020","java-有没有生产View:"+mPresenter.mView.hashCode());
-        Log.e("Ellen2020","java-有没有生产Model:"+mPresenter.mModel.hashCode());
     }
 }

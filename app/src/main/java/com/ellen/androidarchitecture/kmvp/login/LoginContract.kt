@@ -2,6 +2,7 @@ package com.ellen.androidarchitecture.kmvp.login
 
 import com.ellen.androidarchitecture.kmvp.base.BaseModel
 import com.ellen.androidarchitecture.kmvp.base.BaseView
+import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
 
 /**
  * MVP的协议层
@@ -12,7 +13,7 @@ interface LoginContract {
         /**
          * 帐号密码登录
          */
-        fun loginByAccountPassword(account:String,password:String):String
+        fun loginByAccountPassword(account:String,password:String,callback: com.ellen.androidarchitecture.kmvp.login.LoginModel.Callback):String
     }
 
     interface LoginView:BaseView{
@@ -20,7 +21,7 @@ interface LoginContract {
         /**
          * 登录成功
          */
-        fun loginSuccess()
+        fun loginSuccess(jsonBean:LoginBean)
 
         /**
          * 登录失败

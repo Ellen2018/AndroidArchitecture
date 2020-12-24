@@ -42,4 +42,12 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.23.2"
     annotationProcessor  "com.google.dagger:dagger-compiler:2.23.2"
     annotationProcessor  "com.google.dagger:dagger-android-processor:2.23.2"
+
+    //OkHttp + Retrofit
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.okio:okio:1.8.0'
+    api 'com.squareup.retrofit2:retrofit:2.7.0'
+
+    //数据解析JSon
+    api 'com.google.code.gson:gson:2.8.6'
 }
