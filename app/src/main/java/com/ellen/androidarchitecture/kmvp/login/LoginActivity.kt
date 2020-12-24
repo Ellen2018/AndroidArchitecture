@@ -18,7 +18,6 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
 
     private lateinit var etAccount:EditText
     private lateinit var etPassword:EditText
-    private var handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +32,11 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
     }
 
     override fun loginSuccess(jsonBean:LoginBean) {
-        handler.post {
-            Toast.makeText(this,"《${jsonBean.data?.nickname}》登录成功",Toast.LENGTH_SHORT).show()
-        }
+        Toast.makeText(this,"《${jsonBean.data?.nickname}》登录成功",Toast.LENGTH_SHORT).show()
     }
 
     override fun loginFailure(errMessage: String) {
-        handler.post {
-            Toast.makeText(this,"登录失败:${errMessage}",Toast.LENGTH_SHORT).show()
-        }
+        Toast.makeText(this,"登录失败:${errMessage}",Toast.LENGTH_SHORT).show()
     }
 
     override fun initMVP() {

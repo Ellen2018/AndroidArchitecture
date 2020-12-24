@@ -3,6 +3,7 @@ package com.ellen.androidarchitecture.kmvp.login
 import com.ellen.androidarchitecture.kmvp.base.BaseModel
 import com.ellen.androidarchitecture.kmvp.base.BaseView
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
+import io.reactivex.rxjava3.core.Observable
 
 /**
  * MVP的协议层
@@ -13,7 +14,7 @@ interface LoginContract {
         /**
          * 帐号密码登录
          */
-        fun loginByAccountPassword(account:String,password:String,callback: com.ellen.androidarchitecture.kmvp.login.LoginModel.Callback):String
+        fun loginByAccountPassword(account:String,password:String): Observable<LoginBean>
     }
 
     interface LoginView:BaseView{

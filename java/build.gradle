@@ -50,4 +50,11 @@ dependencies {
 
     //数据解析JSon
     api 'com.google.code.gson:gson:2.8.6'
+
+    //RxJava
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api "io.reactivex.rxjava3:rxjava:3.0.4"
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+
 }
