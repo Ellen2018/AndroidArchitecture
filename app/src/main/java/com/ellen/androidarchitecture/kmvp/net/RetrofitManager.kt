@@ -9,13 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitManager{
 
-    private lateinit var retrofit:Retrofit
-    private lateinit var apiService:Api
+    private var retrofit:Retrofit
+    private var apiService:Api
 
     companion object {
         //域名
         const val BASE_URL = "https://www.wanandroid.com"
-
         //登录
         const val LOGIN_URL = "/user/login"
     }
