@@ -11,7 +11,12 @@ abstract class BaseActivity<P : BasePresenter<*,*>> : AppCompatActivity(),BaseVi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMVP()
-        mPresenter.attach()
+
+        //调用MVP的绑定attach周期函数
+        mPresenter.attachView()
+        mPresenter.mView.attachPresenter()
+        mPresenter.mModel.attachPresenter()
+
         //让Presenter感知生命周期，以防止内存泄漏
         mPresenter.attachLifecycle(lifecycle)
     }

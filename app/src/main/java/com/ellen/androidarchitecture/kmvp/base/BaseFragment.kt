@@ -17,7 +17,12 @@ abstract class BaseFragment<P : BasePresenter<BaseModel,BaseView>> : Fragment() 
         savedInstanceState: Bundle?
     ): View? {
         initMVP()
-        mPresenter.attach()
+
+        //调用MVP的绑定attach周期函数
+        mPresenter.attachView()
+        mPresenter.mView.attachPresenter()
+        mPresenter.mModel.attachPresenter()
+        
         //让Presenter感知生命周期，以防止内存泄漏
         mPresenter.attachLifecycle(lifecycle)
         return super.onCreateView(inflater, container, savedInstanceState)
