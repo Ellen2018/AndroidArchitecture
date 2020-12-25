@@ -26,13 +26,15 @@ public class BasePresenter<M extends BaseModel,V extends BaseView> {
         mvpLifeCycle = new MvpLifeCycle(new MvpLifeCycle.Callback() {
             @Override
             public void onDestroy() {
-                 detach();
+                 detachView();
+                 mModel.detachPresenter(BasePresenter.this);
+                 mView.detachPresenter(BasePresenter.this);
                  BasePresenter.this.lifecycle.removeObserver(mvpLifeCycle);
             }
         });
         this.lifecycle.addObserver(mvpLifeCycle);
     }
 
-    protected void detach(){}
-    protected void attach(){}
+    protected void detachView(){}
+    protected void attachView(){}
 }

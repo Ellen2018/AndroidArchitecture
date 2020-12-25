@@ -7,4 +7,13 @@ public class LoginModel implements LoginContract.LoginModel {
         return "test";
     }
 
+    @Override
+    public void attachPresenter(LoginPresenter mPresenter) {
+
+    }
+
+    @Override
+    public void detachPresenter(LoginPresenter mPresenter) {
+
+    }
 }

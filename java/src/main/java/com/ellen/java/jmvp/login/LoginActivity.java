@@ -3,6 +3,7 @@ package com.ellen.java.jmvp.login;
 import android.util.Log;
 
 import com.ellen.java.jmvp.base.BaseMvpActivity;
+import com.ellen.java.jmvp.base.BasePresenter;
 import com.ellen.java.jmvp.di.component.DaggerLoginComponent;
 import com.ellen.java.jmvp.di.module.LoginModule;
 
@@ -26,5 +27,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 .loginModule(new LoginModule(this))
                 .build()
                 .injectLoginActivity(this);
+    }
+
+    @Override
+    public void attachPresenter(LoginPresenter mPresenter) {
+
+    }
+
+    @Override
+    public void detachPresenter(LoginPresenter mPresenter) {
+
     }
 }

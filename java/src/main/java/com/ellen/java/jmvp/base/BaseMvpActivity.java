@@ -16,7 +16,12 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initMvp();
-        mPresenter.attach();
+
+        //调用MVP的生命周期函数attach
+        mPresenter.attachView();
+        mPresenter.mView.attachPresenter(mPresenter);
+        mPresenter.mModel.attachPresenter(mPresenter);
+
         mPresenter.attachLifeCycle(getLifecycle());
     }
 
