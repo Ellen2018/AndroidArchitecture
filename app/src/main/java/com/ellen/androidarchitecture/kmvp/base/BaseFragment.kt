@@ -22,7 +22,7 @@ abstract class BaseFragment<P : BasePresenter<BaseModel,BaseView>> : Fragment() 
         mPresenter.attachView()
         mPresenter.mView.attachPresenter()
         mPresenter.mModel.attachPresenter()
-        
+
         //让Presenter感知生命周期，以防止内存泄漏
         mPresenter.attachLifecycle(lifecycle)
         return super.onCreateView(inflater, container, savedInstanceState)
