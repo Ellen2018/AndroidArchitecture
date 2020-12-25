@@ -1,7 +1,8 @@
 package com.ellen.androidarchitecture.kmvp.login
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.ellen.androidarchitecture.kmvp.di.module.*
 import com.ellen.androidarchitecture.kmvp.base.BaseActivity
 import com.ellen.androidarchitecture.kmvp.di.component.DaggerLoginComponent
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
+import com.ellen.java.jmvp.login.LoginActivity
 
 /**
  * 登录View层
@@ -28,6 +30,9 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
             val account = etAccount.text.toString()
             val password = etPassword.text.toString()
             mPresenter.login(account,password)
+
+            val intent = Intent(this@LoginActivity,LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -48,4 +53,11 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
             .injectLoginActivity(this)
     }
 
+    override fun attachedByPresenter() {
+        Log.e("Ellen2020","LoginPresenter绑定了LoginView")
+    }
+
+    override fun detachedByPresenter() {
+        Log.e("Ellen2020","LoginPresenter解绑了LoginView")
+    }
 }

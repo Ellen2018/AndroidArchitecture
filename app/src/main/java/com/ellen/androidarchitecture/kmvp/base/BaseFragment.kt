@@ -19,9 +19,9 @@ abstract class BaseFragment<P : BasePresenter<BaseModel,BaseView>> : Fragment() 
         initMVP()
 
         //调用MVP的绑定attach周期函数
-        mPresenter.attachView()
-        mPresenter.mView.attachPresenter()
-        mPresenter.mModel.attachPresenter()
+        mPresenter.attachedByView()
+        mPresenter.mView.attachedByPresenter()
+        mPresenter.mModel.attachedByPresenter()
 
         //让Presenter感知生命周期，以防止内存泄漏
         mPresenter.attachLifecycle(lifecycle)

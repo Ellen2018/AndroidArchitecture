@@ -1,6 +1,7 @@
 package com.ellen.androidarchitecture.kmvp.login
 
 import android.text.TextUtils
+import android.util.Log
 import com.ellen.androidarchitecture.kmvp.base.BasePresenter
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
 import com.ellen.androidarchitecture.kmvp.rx.RxUtils
@@ -36,5 +37,15 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
             }
 
         })
+    }
+
+    override fun attachedByView() {
+        super.attachedByView()
+        Log.e("Ellen2020","LoginView绑定了LoginPresenter")
+    }
+
+    override fun detachedByView() {
+        super.detachedByView()
+        Log.e("Ellen2020","LoginView解绑了LoginPresenter")
     }
 }

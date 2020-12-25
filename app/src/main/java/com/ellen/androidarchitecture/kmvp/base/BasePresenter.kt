@@ -31,18 +31,18 @@ abstract class BasePresenter<M : BaseModel,V : BaseView>(
         this.lifecycle = lifecycle
         lifecycleObserver = MvpLifeCycle(object : MvpLifeCycle.Callback{
             override fun onDestroy() {
-                detachView()
-                mView.detachPresenter()
-                mModel.detachPresenter()
+                detachedByView()
+                mView.detachedByPresenter()
+                mModel.detachedByPresenter()
                 this@BasePresenter.lifecycle.removeObserver(lifecycleObserver)
             }
         })
         this.lifecycle.addObserver(lifecycleObserver)
     }
 
-    open fun attachView(){
+    open fun attachedByView(){
     }
 
-    open fun detachView(){
+    open fun detachedByView(){
     }
 }

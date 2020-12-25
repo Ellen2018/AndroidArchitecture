@@ -1,6 +1,8 @@
 package com.ellen.java.jmvp.login;
 
-public class LoginModel implements LoginContract.LoginModel {
+import android.util.Log;
+
+public class LoginModel extends LoginContract.LoginModel {
 
     @Override
     public String login(String account, String password) {
@@ -8,12 +10,14 @@ public class LoginModel implements LoginContract.LoginModel {
     }
 
     @Override
-    public void attachPresenter(LoginPresenter mPresenter) {
-
+    protected void attachedByPresenter() {
+        super.attachedByPresenter();
+        Log.e("Ellen2020","Presenter绑定了Model");
     }
 
     @Override
-    public void detachPresenter(LoginPresenter mPresenter) {
-
+    protected void detachedByPresenter() {
+        super.detachedByPresenter();
+        Log.e("Ellen2020","Presenter解绑了Model");
     }
 }

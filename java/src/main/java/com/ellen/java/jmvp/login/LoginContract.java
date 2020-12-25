@@ -5,12 +5,12 @@ import com.ellen.java.jmvp.base.BaseView;
 
 public interface LoginContract {
 
-    interface LoginModel extends BaseModel<LoginPresenter>{
-        String login(String account,String password);
+    abstract class LoginModel extends BaseModel{
+        abstract String login(String account,String password);
     }
 
-    interface LoginView extends BaseView<LoginPresenter>{
-        void loginSuccess();
-        void loginFailure(String errMessage);
+    interface LoginView extends BaseView{
+        abstract void loginSuccess();
+        abstract void loginFailure(String errMessage);
     }
 }

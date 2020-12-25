@@ -18,9 +18,9 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
         initMvp();
 
         //调用MVP的生命周期函数attach
-        mPresenter.attachView();
-        mPresenter.mView.attachPresenter(mPresenter);
-        mPresenter.mModel.attachPresenter(mPresenter);
+        mPresenter.attachedByView();
+        mPresenter.mView.attachedByPresenter();
+        mPresenter.mModel.attachedByPresenter();
 
         mPresenter.attachLifeCycle(getLifecycle());
     }

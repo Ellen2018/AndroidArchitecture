@@ -1,15 +1,13 @@
 package com.ellen.java.jmvp.base;
 
-public abstract class BaseModel<P extends BasePresenter> {
+public abstract class BaseModel{
     /**
-     * 绑定Presenter时调用
-     * @param mPresenter
+     * 被Presenter绑定时调用
      */
-    protected void attachPresenter(P mPresenter){}
+    protected void attachedByPresenter(){}
 
     /**
-     * 解绑Presenter时调用
-     * @param mPresenter
+     * 被Presenter解绑时调用
      */
-    protected void detachPresenter(P mPresenter){}
+    protected void detachedByPresenter(){}
 }

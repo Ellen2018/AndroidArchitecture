@@ -7,10 +7,10 @@ interface BaseView{
     /**
      * 绑定时调用
      */
-    fun attachPresenter(){}
+    fun attachedByPresenter(){}
 
     /**
      * 取消绑定时调用
      */
-    fun detachPresenter(){}
+    fun detachedByPresenter(){}
 }

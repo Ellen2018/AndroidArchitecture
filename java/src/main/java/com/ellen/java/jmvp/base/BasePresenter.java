@@ -26,15 +26,22 @@ public class BasePresenter<M extends BaseModel,V extends BaseView> {
         mvpLifeCycle = new MvpLifeCycle(new MvpLifeCycle.Callback() {
             @Override
             public void onDestroy() {
-                 detachView();
-                 mModel.detachPresenter(BasePresenter.this);
-                 mView.detachPresenter(BasePresenter.this);
+                 detachedByView();
+                 mModel.detachedByPresenter();
+                 mView.detachedByPresenter();
                  BasePresenter.this.lifecycle.removeObserver(mvpLifeCycle);
             }
         });
         this.lifecycle.addObserver(mvpLifeCycle);
     }
 
-    protected void detachView(){}
-    protected void attachView(){}
+    /**
+     * 被View绑定了时调用
+     */
+    protected void detachedByView(){}
+
+    /**
+     * 被View解绑时调用
+     */
+    protected void attachedByView(){}
 }
