@@ -7,12 +7,18 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitManager{
+class RetrofitManager private constructor(){
 
     private var retrofit:Retrofit
     private var apiService:Api
 
     companion object {
+        //通过@JvmStatic注解，使得在Java中调用instance直接是像调用静态函数一样，
+        //类似KLazilyDCLSingleton.getInstance(),如果不加注解，在Java中必须这样调用: KLazilyDCLSingleton.Companion.getInstance().
+        @JvmStatic
+        //使用lazy属性代理，并指定LazyThreadSafetyMode为SYNCHRONIZED模式保证线程安全
+        val instance: RetrofitManager by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { RetrofitManager() }
+
         //域名
         const val BASE_URL = "https://www.wanandroid.com"
         //登录

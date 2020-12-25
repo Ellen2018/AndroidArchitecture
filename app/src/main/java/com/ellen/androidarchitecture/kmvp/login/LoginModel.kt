@@ -45,8 +45,7 @@ class LoginModel @Inject constructor():  LoginContract.LoginModel {
 //    }
 
     override fun loginByAccountPassword(account: String, password: String): Observable<LoginBean> {
-        val retrofitManager = RetrofitManager()
-        return retrofitManager.login(account, password)
+        return RetrofitManager.instance.login(account, password)
     }
 }
 
