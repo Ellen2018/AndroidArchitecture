@@ -4,6 +4,7 @@ import com.ellen.androidarchitecture.kmvp.base.BaseModel
 import com.ellen.androidarchitecture.kmvp.base.BaseView
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.Deferred
 
 /**
  * MVP的协议层
@@ -14,7 +15,12 @@ interface LoginContract {
         /**
          * 帐号密码登录
          */
-        fun loginByAccountPassword(account:String,password:String): Observable<LoginBean>
+        fun loginByAccountPasswordRxJava(account:String,password:String): Observable<LoginBean>
+
+        /**
+         * 帐号密码登录
+         */
+        fun loginByAccountPasswordCoroutine(account:String,password:String) : Deferred<LoginBean>
     }
 
     interface LoginView:BaseView{

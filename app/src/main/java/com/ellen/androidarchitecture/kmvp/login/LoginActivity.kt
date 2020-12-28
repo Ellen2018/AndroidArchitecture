@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
         findViewById<Button>(R.id.bt_login).setOnClickListener {
             val account = etAccount.text.toString()
             val password = etPassword.text.toString()
-            mPresenter.login(account,password)
+            mPresenter.loginByCoroutine(account,password)
         }
     }
 

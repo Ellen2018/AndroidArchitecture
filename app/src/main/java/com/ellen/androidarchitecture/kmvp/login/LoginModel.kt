@@ -4,6 +4,7 @@ import android.util.Log
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
 import com.ellen.androidarchitecture.kmvp.net.RetrofitManager
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.Deferred
 import javax.inject.Inject
 
 /**
@@ -11,8 +12,15 @@ import javax.inject.Inject
  */
 class LoginModel @Inject constructor():  LoginContract.LoginModel {
 
-    override fun loginByAccountPassword(account: String, password: String): Observable<LoginBean> {
-        return RetrofitManager.instance.login(account, password)
+    override fun loginByAccountPasswordRxJava(account: String, password: String): Observable<LoginBean> {
+        return RetrofitManager.instance.loginByRxJava(account, password)
+    }
+
+    override fun loginByAccountPasswordCoroutine(
+        account: String,
+        password: String
+    ): Deferred<LoginBean> {
+        return RetrofitManager.instance.loginByCoroutines(account,password)
     }
 
     override fun attachedByPresenter() {

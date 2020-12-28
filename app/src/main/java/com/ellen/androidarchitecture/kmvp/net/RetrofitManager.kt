@@ -1,7 +1,9 @@
 package com.ellen.androidarchitecture.kmvp.net
 
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -25,8 +27,12 @@ class RetrofitManager private constructor(){
         const val LOGIN_URL = "/user/login"
     }
 
-    fun login(account:String,password:String):Observable<LoginBean>{
-        return apiService.login(LOGIN_URL,account,password)
+    fun loginByRxJava(account:String,password:String):Observable<LoginBean>{
+        return apiService.loginByRxJava(LOGIN_URL,account,password)
+    }
+
+    fun loginByCoroutines(account:String,password: String):Deferred<LoginBean>{
+        return apiService.loginByCoroutine(LOGIN_URL,account,password)
     }
 
     init {
@@ -40,6 +46,7 @@ class RetrofitManager private constructor(){
                 )
                 .addConverterFactory(GsonConverterFactory.create()) //支持Json
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create()) // 支持RxJava
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())//支持协程
                 .build()
         apiService = retrofit.create(Api::class.java)
     }

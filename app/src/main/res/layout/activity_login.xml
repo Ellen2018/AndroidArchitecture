@@ -8,6 +8,7 @@
         android:id="@+id/et_account"
         android:layout_width="match_parent"
         android:hint="请输入帐号"
+        android:text="Ellen2021"
         android:layout_height="60dp"/>
 
     <EditText
@@ -15,6 +16,7 @@
         android:layout_below="@id/et_account"
         android:layout_marginTop="10dp"
         android:hint="请输入密码"
+        android:text="Ellen2021"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
 
