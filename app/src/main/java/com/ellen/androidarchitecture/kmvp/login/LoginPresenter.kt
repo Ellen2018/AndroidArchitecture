@@ -57,23 +57,35 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
      * 使用协程请求网络
      */
     fun loginByCoroutine(account: String, password: String) {
-        var data: LoginBean? = null
-        GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                data = RetrofitManager.instance.loginByCoroutines(account, password).await()
-            }
-            if(data != null) {
-                val netData = data as LoginBean
-                if(netData.data == null){
-                    mView.loginFailure(netData.errorMsg)
-                }else{
-                    mView.loginSuccess(netData)
+
+        AccountPasswordCheckUtils.check(account,password,object : AccountPasswordCheckUtils.CheckCallback{
+            override fun onSuccess() {
+                //使用协程发起网络请求
+                var data: LoginBean? = null
+                GlobalScope.launch(Dispatchers.Main) {
+                    withContext(Dispatchers.IO) {
+                        data = RetrofitManager.instance.loginByCoroutines(account, password).await()
+                    }
+                    if(data != null) {
+                        val netData = data as LoginBean
+                        if(netData.data == null){
+                            mView.loginFailure(netData.errorMsg)
+                        }else{
+                            mView.loginSuccess(netData)
+                        }
+                    }else{
+                        mView.loginFailure("登录超时异常!")
+                    }
+
                 }
-            }else{
-                mView.loginFailure("登录超时异常!")
             }
 
-        }
+            override fun onFailure(errMessage: String) {
+                mView.loginFailure(errMessage)
+            }
+
+        })
+
     }
 
     override fun attachedByView() {
