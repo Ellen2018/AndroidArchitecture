@@ -31,8 +31,8 @@ class RetrofitManager private constructor(){
         return apiService.loginByRxJava(LOGIN_URL,account,password)
     }
 
-    fun loginByCoroutines(account:String,password: String):Deferred<LoginBean>{
-        return apiService.loginByCoroutine(LOGIN_URL,account,password)
+    fun loginByCoroutinesAsync(account:String, password: String):Deferred<LoginBean>{
+        return apiService.loginByCoroutineAsync(LOGIN_URL,account,password)
     }
 
     init {

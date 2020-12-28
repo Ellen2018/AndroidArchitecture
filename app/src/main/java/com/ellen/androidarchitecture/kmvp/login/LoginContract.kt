@@ -20,7 +20,7 @@ interface LoginContract {
         /**
          * 帐号密码登录
          */
-        fun loginByAccountPasswordCoroutine(account:String,password:String) : Deferred<LoginBean>
+        fun loginByAccountPasswordCoroutineAsync(account:String, password:String) : Deferred<LoginBean>
     }
 
     interface LoginView:BaseView{

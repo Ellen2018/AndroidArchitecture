@@ -16,11 +16,11 @@ class LoginModel @Inject constructor():  LoginContract.LoginModel {
         return RetrofitManager.instance.loginByRxJava(account, password)
     }
 
-    override fun loginByAccountPasswordCoroutine(
+    override fun loginByAccountPasswordCoroutineAsync(
         account: String,
         password: String
     ): Deferred<LoginBean> {
-        return RetrofitManager.instance.loginByCoroutines(account,password)
+        return RetrofitManager.instance.loginByCoroutinesAsync(account,password)
     }
 
     override fun attachedByPresenter() {

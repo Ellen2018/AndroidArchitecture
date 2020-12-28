@@ -7,7 +7,6 @@ import com.ellen.androidarchitecture.kmvp.net.RetrofitManager
 import com.ellen.androidarchitecture.kmvp.rx.RxUtils
 import com.ellen.androidarchitecture.kmvp.rx.SimpleObserver
 import com.ellen.androidarchitecture.kmvp.utils.AccountPasswordCheckUtils
-import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -67,7 +66,7 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
                 var data: LoginBean? = null
                 GlobalScope.launch(Dispatchers.Main) {
                     withContext(Dispatchers.IO) {
-                        data = RetrofitManager.instance.loginByCoroutines(account, password).await()
+                        data = RetrofitManager.instance.loginByCoroutinesAsync(account, password).await()
                     }
                     if(data != null) {
                         val netData = data as LoginBean

@@ -22,7 +22,7 @@ interface Api {
      * 基于协程实现
      */
     @POST
-    fun loginByCoroutine(@Url path:String, @Query("username") account: String, @Query("password") password:String): Deferred<LoginBean>
+    fun loginByCoroutineAsync(@Url path:String, @Query("username") account: String, @Query("password") password:String): Deferred<LoginBean>
 
 
 }
