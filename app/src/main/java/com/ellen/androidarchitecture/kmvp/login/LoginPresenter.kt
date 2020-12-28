@@ -78,7 +78,6 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
                     }else{
                         mView.loginFailure("登录超时异常!")
                     }
-
                 }
             }
 

@@ -7,14 +7,14 @@ import android.widget.EditText
 import android.widget.Toast
 import com.ellen.androidarchitecture.R
 import com.ellen.androidarchitecture.kmvp.di.module.*
-import com.ellen.androidarchitecture.kmvp.base.BaseActivity
+import com.ellen.androidarchitecture.kmvp.base.BaseMvpActivity
 import com.ellen.androidarchitecture.kmvp.di.component.DaggerLoginComponent
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
 
 /**
  * 登录View层
  */
-class LoginActivity : BaseActivity<LoginPresenter>(),LoginContract.LoginView {
+class LoginActivity : BaseMvpActivity<LoginPresenter>(),LoginContract.LoginView {
 
     private lateinit var etAccount:EditText
     private lateinit var etPassword:EditText

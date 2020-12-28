@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseActivity<P : BasePresenter<*,*>> : AppCompatActivity(),BaseView {
+abstract class BaseMvpActivity<P : BasePresenter<*,*>> : AppCompatActivity(),BaseView {
     @Inject
     protected lateinit var mPresenter:P
 
