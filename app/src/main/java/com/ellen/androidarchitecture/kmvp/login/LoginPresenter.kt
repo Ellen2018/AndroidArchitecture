@@ -22,6 +22,9 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
     @Inject
     constructor(mModel: LoginModel, mView: LoginContract.LoginView) : super(mModel, mView)
 
+    /**
+     * 使用 RxJava 请求网络
+     */
     fun loginByRxJava(account: String, password: String) {
         AccountPasswordCheckUtils.check(
             account,
