@@ -11,6 +11,8 @@
 
 > 无论是Kotlin还是Java部分，均采用MVP+Dagger2+Retrofit+RxJava进行构建，而且利用Jetpack的LifeCycle组件让MVP具备生命周期感知功能，防止不必要的内存消耗和泄漏等
 
+> 2020-12-28 加入Kotlin+MVP+Dagger2+Retrofit+协程进行构建
+
 # MVVM
 
 > 搭建过程中
