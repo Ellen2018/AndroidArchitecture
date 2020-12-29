@@ -1,6 +1,6 @@
 # 说明
 
->这是一个Android[MVC & MVP & MVVM & 组件化]架构演示如何搭建的项目，仅供参考,Java & Kotlin都有案例，Kotlin搭建的架构放在了app module中了，Java部分放在了java module中了，笔者另外打算加入单元测试案例到项目中
+>这是一个Android[MVC & MVP & MVVM & 组件化]架构演示如何搭建的项目，仅供参考,Java & Kotlin都有案例，Kotlin搭建的架构放在了app module中了，Java部分放在了java module中了，此外笔者加入单元测试案例到项目中
 
 
 # MVC  
