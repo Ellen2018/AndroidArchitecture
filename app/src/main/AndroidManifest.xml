@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidArchitecture">
-        <activity android:name=".kmvvm.oldmvvm.StudentActivity">
+        <activity android:name=".kmvvm.newmvvm.StudentActivityNew">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="student"
+            type="com.ellen.androidarchitecture.kmvvm.bean.Student" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_student_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:text="@{student.name}" />
+
+            <TextView
+                android:id="@+id/tv_student_id"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:text="@{student.id}" />
+
+            <!--这里进行了双向绑定,studentViewModel.studentObservable.id与此控件的text属性进行了双向绑定-->
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:text="@={student.name}"
+                android:layout_height="0dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
