@@ -7,18 +7,25 @@ class MMKVUtils(name: String) {
     private var mmkv: MMKV
 
     fun save(key: String, value: Any) {
-        if (value is String) {
-            mmkv.encode(key, value as String?)
-        } else if (value is Int) {
-            mmkv.encode(key, (value as Int?)!!)
-        } else if (value is Boolean) {
-            mmkv.encode(key, (value as Boolean?)!!)
-        } else if (value is Float) {
-            mmkv.encode(key, (value as Float?)!!)
-        } else if (value is Long) {
-            mmkv.encode(key, (value as Long?)!!)
-        } else {
-            mmkv.encode(key, value as String?)
+        when (value) {
+            is String -> {
+                mmkv.encode(key, value as String?)
+            }
+            is Int -> {
+                mmkv.encode(key, (value as Int?)!!)
+            }
+            is Boolean -> {
+                mmkv.encode(key, (value as Boolean?)!!)
+            }
+            is Float -> {
+                mmkv.encode(key, (value as Float?)!!)
+            }
+            is Long -> {
+                mmkv.encode(key, (value as Long?)!!)
+            }
+            else -> {
+                mmkv.encode(key, value as String?)
+            }
         }
     }
 

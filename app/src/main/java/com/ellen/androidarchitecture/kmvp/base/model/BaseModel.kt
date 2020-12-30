@@ -5,7 +5,6 @@ package com.ellen.androidarchitecture.kmvp.base.model
  */
 abstract class BaseModel{
 
-
     /**
      * 绑定时调用
      */
