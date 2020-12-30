@@ -1,7 +1,7 @@
 package com.ellen.androidarchitecture.kmvp.di.module
 
 import com.ellen.androidarchitecture.kmvp.login.LoginContract
-import com.ellen.androidarchitecture.kmvp.login.LoginModel
+import com.ellen.androidarchitecture.kmvp.login.model.LoginModel
 import com.ellen.androidarchitecture.kmvp.login.LoginPresenter
 import dagger.Module
 import dagger.Provides
@@ -10,12 +10,12 @@ import dagger.Provides
 class LoginModule(private var view: LoginContract.LoginView) {
 
     @Provides
-    fun provideLoginPresenter(loginModel: LoginModel,loginView: LoginContract.LoginView) : LoginPresenter{
+    fun provideLoginPresenter(loginModel: LoginModel, loginView: LoginContract.LoginView) : LoginPresenter{
         return LoginPresenter(loginModel,loginView)
     }
 
     @Provides
-    fun provideLoginModel() : LoginModel{
+    fun provideLoginModel() : LoginModel {
         return LoginModel()
     }
 

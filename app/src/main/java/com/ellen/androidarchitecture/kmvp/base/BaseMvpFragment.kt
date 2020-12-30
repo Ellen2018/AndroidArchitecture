@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ellen.androidarchitecture.kmvp.base.model.BaseModel
 import javax.inject.Inject
 
 abstract class BaseMvpFragment<P : BasePresenter<BaseModel,BaseView>> : Fragment() {

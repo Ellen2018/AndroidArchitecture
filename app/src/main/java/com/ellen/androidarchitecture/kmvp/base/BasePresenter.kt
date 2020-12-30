@@ -3,6 +3,7 @@ package com.ellen.androidarchitecture.kmvp.base
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import com.ellen.androidarchitecture.kmvp.base.life.MvpLifeCycle
+import com.ellen.androidarchitecture.kmvp.base.model.BaseModel
 
 /**
  * MVP中的Presenter层

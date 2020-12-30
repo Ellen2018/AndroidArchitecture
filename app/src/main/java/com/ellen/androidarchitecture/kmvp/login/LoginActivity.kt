@@ -1,6 +1,7 @@
 package com.ellen.androidarchitecture.kmvp.login
 
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +11,8 @@ import com.ellen.androidarchitecture.kmvp.di.module.*
 import com.ellen.androidarchitecture.kmvp.base.BaseMvpActivity
 import com.ellen.androidarchitecture.kmvp.di.component.DaggerLoginComponent
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
+import com.ellen.androidarchitecture.kmvp.login.bean.UserAccount
+import com.google.gson.Gson
 
 /**
  * 登录View层
@@ -24,6 +27,8 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(),LoginContract.LoginView 
         setContentView(R.layout.activity_login)
         etAccount = findViewById(R.id.et_account)
         etPassword = findViewById(R.id.et_password)
+        //读取帐号
+        mPresenter.readAccount()
         findViewById<Button>(R.id.bt_login).setOnClickListener {
             val account = etAccount.text.toString()
             val password = etPassword.text.toString()
@@ -37,6 +42,16 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(),LoginContract.LoginView 
 
     override fun loginFailure(errMessage: String) {
         Toast.makeText(this,"登录失败:${errMessage}",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun initUserAccount(userAccount: UserAccount?) {
+        if(userAccount != null) {
+            //设置记录的帐号
+            etAccount.text = Editable.Factory.getInstance().newEditable(userAccount.account)
+
+            //设置记录的密码
+            etPassword.text = Editable.Factory.getInstance().newEditable(userAccount.password)
+        }
     }
 
     override fun initMVP() {

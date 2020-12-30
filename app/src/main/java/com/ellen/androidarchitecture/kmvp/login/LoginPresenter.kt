@@ -3,6 +3,8 @@ package com.ellen.androidarchitecture.kmvp.login
 import android.util.Log
 import com.ellen.androidarchitecture.kmvp.base.BasePresenter
 import com.ellen.androidarchitecture.kmvp.login.bean.LoginBean
+import com.ellen.androidarchitecture.kmvp.login.bean.UserAccount
+import com.ellen.androidarchitecture.kmvp.login.model.LoginModel
 import com.ellen.androidarchitecture.kmvp.net.RetrofitManager
 import com.ellen.androidarchitecture.kmvp.rx.RxUtils
 import com.ellen.androidarchitecture.kmvp.rx.SimpleObserver
@@ -74,6 +76,10 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
                             mView.loginFailure(netData.errorMsg)
                         }else{
                             mView.loginSuccess(netData)
+
+                            //登录成功，保存用户帐号和密码
+                            val userAccount = UserAccount(account,password)
+                            mModel.save(userAccount)
                         }
                     }else{
                         mView.loginFailure("登录超时异常!")
@@ -87,6 +93,13 @@ class LoginPresenter : BasePresenter<LoginModel, LoginContract.LoginView> {
 
         })
 
+    }
+
+    /**
+     * 读取帐号和密码
+     */
+    fun readAccount(){
+        mView.initUserAccount(mModel.read())
     }
 
     override fun attachedByView() {
